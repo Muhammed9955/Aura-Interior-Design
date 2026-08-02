@@ -108,16 +108,6 @@ export const Header: React.FC<HeaderProps> = ({ t, lang, onLanguageChange }) => 
             <span>{t.nav.bookConsultation}</span>
           </a>
 
-          {/* Dark / Light Theme Switcher */}
-          <button
-            onClick={toggleTheme}
-            className="p-1.5 rounded-full border border-[#C5A059]/40 text-[#C5A059] hover:bg-[#C5A059]/20 transition-all cursor-pointer"
-            title={isDark ? (lang === 'ar' ? 'الوضع النهارى' : 'Light Mode') : (lang === 'ar' ? 'الوضع الليلى' : 'Dark Mode')}
-            aria-label="Toggle theme mode"
-          >
-            {isDark ? <Sun className="w-4 h-4 text-[#F3E5AB]" /> : <Moon className="w-4 h-4 text-[#1F1A15]" />}
-          </button>
-
           {/* Language Switcher */}
           <button
             onClick={toggleLanguage}
@@ -131,15 +121,6 @@ export const Header: React.FC<HeaderProps> = ({ t, lang, onLanguageChange }) => 
 
         {/* Mobile Controls & Hamburger */}
         <div className="flex items-center gap-2 lg:hidden">
-          {/* Mobile Theme Toggle */}
-          <button
-            onClick={toggleTheme}
-            className="p-1.5 text-[#C5A059]"
-            aria-label="Toggle theme"
-          >
-            {isDark ? <Sun className="w-4 h-4 text-[#F3E5AB]" /> : <Moon className="w-4 h-4 text-[#1F1A15]" />}
-          </button>
-
           {/* Mobile Lang Toggle */}
           <button
             onClick={toggleLanguage}

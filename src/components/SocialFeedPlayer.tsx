@@ -4,8 +4,8 @@ import React, { useState } from 'react';
 import { Language } from '../data/translations';
 import { Instagram, Facebook, MonitorPlay } from 'lucide-react';
 
-const TikTokIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' }) => (
-  <svg className={className} viewBox="0 0 24 24" fill="currentColor">
+const TikTokIcon: React.FC<{ className?: string; style?: React.CSSProperties }> = ({ className = 'w-4 h-4', style }) => (
+  <svg className={className} style={style} viewBox="0 0 24 24" fill="currentColor">
     <path d="M19.589 6.686a4.793 4.793 0 0 1-3.77-4.245V2h-3.445v13.672a2.896 2.896 0 0 1-2.883 2.897 2.896 2.896 0 0 1-2.897-2.897 2.896 2.896 0 0 1 2.897-2.897c.362 0 .705.074 1.022.201V9.52a6.326 6.326 0 0 0-1.022-.086C6.07 9.434 3.5 12.004 3.5 15.176c0 3.171 2.57 5.741 5.742 5.741 3.171 0 5.741-2.57 5.741-5.741V8.65a8.214 8.214 0 0 0 4.606 1.411V6.616a4.814 4.814 0 0 1-.001.07z" />
   </svg>
 );
@@ -16,7 +16,7 @@ const platforms: {
   id: Platform;
   labelAr: string;
   labelEn: string;
-  Icon: React.FC<{ className?: string }>;
+  Icon: React.FC<{ className?: string; style?: React.CSSProperties }>;
   color: string;
   embedUrl: string;
   externalUrl: string;

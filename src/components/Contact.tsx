@@ -91,8 +91,8 @@ export const Contact: React.FC<ContactProps> = ({ t, lang }) => {
                   <MapPin className="w-5 h-5" />
                 </div>
                 <div>
-                  <span className="block text-xs text-[#5C5243] dark:text-[#A39888] font-semibold">{t.contact.locationLabel}</span>
-                  <span className="text-sm text-[#1F1A15] dark:text-[#F5F2EB]">{t.contact.locationVal}</span>
+                  <span className="block text-xs text-[#5C5243] dark:text-[#A39888] font-semibold">{lang === 'ar' ? 'الموقع والعنوان' : 'Location'}</span>
+                  <span className="text-sm text-[#1F1A15] dark:text-[#F5F2EB]">{lang === 'ar' ? 'مصر — القاهرة الجديدة، التجمع الخامس' : 'Egypt — New Cairo, 5th Settlement'}</span>
                 </div>
               </div>
 
@@ -153,7 +153,9 @@ export const Contact: React.FC<ContactProps> = ({ t, lang }) => {
                 <div className="w-16 h-16 rounded-full bg-[#C5A059]/20 text-[#C5A059] flex items-center justify-center mx-auto">
                   <CheckCircle className="w-8 h-8" />
                 </div>
-                <h3 className="text-2xl font-serif text-[#1F1A15] dark:text-[#F5F2EB]">{t.contact.formSuccess}</h3>
+                <h3 className="text-2xl font-serif text-[#1F1A15] dark:text-[#F5F2EB]">
+                  {lang === 'ar' ? 'تم إرسال طلبك بنجاح' : 'Request Sent Successfully'}
+                </h3>
                 <p className="text-base text-[#5C5243] dark:text-[#E0D5C5] font-light max-w-md mx-auto">
                   {lang === 'ar'
                     ? 'تم توجيه تفاصيل استشارتك إلى الواتساب الرسمي لأورا. سيتواصل معك أحد مهندسينا فوراً.'
@@ -170,7 +172,7 @@ export const Contact: React.FC<ContactProps> = ({ t, lang }) => {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div>
                   <label className="block text-xs font-bold text-[#C5A059] uppercase tracking-wider mb-2">
-                    {t.contact.nameLabel}
+                    {lang === 'ar' ? 'الاسم بالكامل' : 'Full Name'}
                   </label>
                   <input
                     type="text"
@@ -216,7 +218,7 @@ export const Contact: React.FC<ContactProps> = ({ t, lang }) => {
 
                 <div>
                   <label className="block text-xs font-bold text-[#C5A059] uppercase tracking-wider mb-2">
-                    {t.contact.messageLabel}
+                    {lang === 'ar' ? 'تفاصيل الاستفسار والعقار' : 'Project Details & Inquiry'}
                   </label>
                   <textarea
                     rows={4}

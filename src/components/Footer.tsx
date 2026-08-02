@@ -28,7 +28,9 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
               <span className="font-serif font-bold text-lg text-[#1F1A15] dark:text-white">AURA INTERIOR DESIGN</span>
             </div>
             <p className="text-xs text-[#6B6052] dark:text-[#A39888] leading-relaxed">
-              {t.footer.aboutText}
+              {lang === 'ar'
+                ? 'أورا للتصميم الداخلي والديكور — نُحَوِّل مساحتك إلى تحفة فنية تعكس شخصيتك وطموحك بأعلى معايير الفخامة والاتقان.'
+                : 'Aura Interior Design & Fit-Out — Transforming your space into a living masterpiece.'}
             </p>
             <div className="flex gap-3 pt-2">
               <a
@@ -101,7 +103,7 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
           {/* Contact Details */}
           <div>
             <h4 className="text-sm font-bold uppercase tracking-wider text-[#C5A059] mb-4">
-              {t.footer.contactHeader}
+              {lang === 'ar' ? 'تواصل معنا' : 'Contact Us'}
             </h4>
             <ul className="space-y-3 text-xs">
               <li className="flex items-center gap-2">
@@ -118,7 +120,7 @@ export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
               </li>
               <li className="flex items-center gap-2">
                 <MapPin className="w-4 h-4 text-[#C5A059]" />
-                <span>{t.contact.locationVal}</span>
+                <span>{lang === 'ar' ? 'مصر — القاهرة الجديدة، التجمع الخامس' : 'Egypt — New Cairo, 5th Settlement'}</span>
               </li>
             </ul>
           </div>
