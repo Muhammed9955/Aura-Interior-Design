@@ -1,0 +1,138 @@
+export interface ProjectItem {
+  id: string;
+  titleAr: string;
+  titleEn: string;
+  category: 'villas' | 'apartments' | 'kitchens' | 'commercial';
+  locationAr: string;
+  locationEn: string;
+  area: string;
+  year: string;
+  image: string;
+  beforeImage: string;
+  afterImage: string;
+  descriptionAr: string;
+  descriptionEn: string;
+}
+
+export const projectsData: ProjectItem[] = [
+  {
+    id: 'proj-1',
+    titleAr: 'فيلا فارهة - التجمع الخامس (كمبوند ميفيدا)',
+    titleEn: 'Luxury Villa - New Cairo (Mivida Compound)',
+    category: 'villas',
+    locationAr: 'القاهرة الجديدة، التجمع الخامس',
+    locationEn: 'New Cairo, 5th Settlement',
+    area: '480 m²',
+    year: '2025',
+    image: '/images/story.png',
+    beforeImage: '/images/before.png',
+    afterImage: '/images/story.png',
+    descriptionAr: 'تصميم وتنفيذ كامل لفيلا مستقلة بديكورات مودرن وأسقف مرتفعة وتكسيات خشبية طبيعية مع إضاءة ذكية.',
+    descriptionEn: 'Full architectural fit-out for a standalone villa featuring Japandi aesthetics, fluted oak paneling, and smart automation.',
+  },
+  {
+    id: 'proj-2',
+    titleAr: 'شقة بنتهاوس - الشيخ زايد (كمبوند سوديك)',
+    titleEn: 'Modern Penthouse - Sheikh Zayed (SODIC Compound)',
+    category: 'apartments',
+    locationAr: 'الشيخ زايد، أكتوبر',
+    locationEn: 'Sheikh Zayed, October City',
+    area: '240 m²',
+    year: '2025',
+    image: '/images/hero.png',
+    beforeImage: '/images/before.png',
+    afterImage: '/images/hero.png',
+    descriptionAr: 'تشطيب سوبر ديلوكس لشقة بنتهاوس بلمسات رخام برونزي وغرفة معيشة متكاملة تطل على التراس الرئيسي.',
+    descriptionEn: 'Super deluxe fitout for a luxury penthouse with open-plan reception, bronze marble accents, and terrace lounge.',
+  },
+  {
+    id: 'proj-3',
+    titleAr: 'مطبخ أكريليك ألترا مودرن - كمبوند بالم هيلز',
+    titleEn: 'Ultra Modern Acrylic Kitchen - Palm Hills Compound',
+    category: 'kitchens',
+    locationAr: '6 أكتوبر، بالم هيلز',
+    locationEn: '6th October, Palm Hills',
+    area: '35 m²',
+    year: '2025',
+    image: '/images/kitchen.png',
+    beforeImage: '/images/before.png',
+    afterImage: '/images/kitchen.png',
+    descriptionAr: 'تصميم مطبخ أمريكي مزود بإيلاند رخام كالاكاتا وإكسسوارات بلوم ألمانية مقاومة للماء والحرارة.',
+    descriptionEn: 'Open-concept kitchen with waterfall Calacatta marble island and waterproof Blum German soft-close hardware.',
+  },
+  {
+    id: 'proj-4',
+    titleAr: 'جناح نوم ماستر فاخر - فيلا كمبوند هايتس',
+    titleEn: 'Luxury Master Bedroom Suite - Heights Villa',
+    category: 'villas',
+    locationAr: 'القاهرة الجديدة، النرجس',
+    locationEn: 'New Cairo, El Narges',
+    area: '65 m²',
+    year: '2025',
+    image: '/images/bedroom.png',
+    beforeImage: '/images/before.png',
+    afterImage: '/images/bedroom.png',
+    descriptionAr: 'جناح نوم رئيسي يضم غرفة ملابس دبل دريسنج وحمام رخام فاخر مع إضاءات خافتة هادئة.',
+    descriptionEn: 'Master suite featuring a double walk-in closet, en-suite marble bathroom, and ambient headboard lighting.',
+  },
+  {
+    id: 'proj-5',
+    titleAr: 'دريسنج روم ودوالم مودرن - كمبوند سوان ليك',
+    titleEn: 'Modern Glass Dressing Room - Swan Lake Compound',
+    category: 'apartments',
+    locationAr: 'القاهرة الجديدة، سوان ليك',
+    locationEn: 'New Cairo, Swan Lake',
+    area: '40 m²',
+    year: '2025',
+    image: '/images/dressing.png',
+    beforeImage: '/images/before.png',
+    afterImage: '/images/dressing.png',
+    descriptionAr: 'تصميم غرفة ملابس زجاجية بإضاءات LED غائرة وجزيرة وسطية لحفظ الساعات والمجوهرات.',
+    descriptionEn: 'Bespoke walk-in wardrobe with bronze smoked glass doors, internal LED profiles, and jewelry island.',
+  },
+  {
+    id: 'proj-6',
+    titleAr: 'مقر إداري ومكاتب شركات - القرية الذكية',
+    titleEn: 'Corporate Head Office - Smart Village',
+    category: 'commercial',
+    locationAr: 'طريق مصر إسكندرية الصحراوي، القرية الذكية',
+    locationEn: 'Smart Village, Giza',
+    area: '320 m²',
+    year: '2024',
+    image: '/images/cover.jpg',
+    beforeImage: '/images/before.png',
+    afterImage: '/images/cover.jpg',
+    descriptionAr: 'تجهيز وتأثيث مقرات شركات بالتجليدات الخشبية الصوتية وإضاءات مستمرة تعزز الإنتاجية.',
+    descriptionEn: 'Acoustic wood cladding, ergonomic workstations, and executive boardrooms built for productivity.',
+  },
+  {
+    id: 'proj-7',
+    titleAr: 'تاون هاوس عصري - الشروق',
+    titleEn: 'Contemporary Townhouse - El Shorouk City',
+    category: 'villas',
+    locationAr: 'مدينة الشروق، المنطقة الأولى',
+    locationEn: 'El Shorouk City',
+    area: '310 m²',
+    year: '2024',
+    image: '/images/villa.png',
+    beforeImage: '/images/before.png',
+    afterImage: '/images/villa.png',
+    descriptionAr: 'ديكورات وتصميم 3D وتنفيذ كامل لتاون هاوس بلمسات الخشب والرخام الدافئ.',
+    descriptionEn: 'Complete interior design and turnkey fit-out for a modern 3-story townhouse with warm textures.',
+  },
+  {
+    id: 'proj-8',
+    titleAr: 'شقة مودرن مينيماليست - العاصمة الإدارية',
+    titleEn: 'Warm Minimalist Apartment - New Capital',
+    category: 'apartments',
+    locationAr: 'العاصمة الإدارية الجديدة، R7',
+    locationEn: 'New Administrative Capital, R7',
+    area: '190 m²',
+    year: '2024',
+    image: '/images/after.png',
+    beforeImage: '/images/before.png',
+    afterImage: '/images/after.png',
+    descriptionAr: 'تشطيب شقة بالكامل بأسلوب المينيماليزم مع دمج وحدات التخزين المخفية والدهانات الهادئة.',
+    descriptionEn: 'Minimalist residential fit-out with seamless concealed storage cabinets and warm beige tones.',
+  },
+];
