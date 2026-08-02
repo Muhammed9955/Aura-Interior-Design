@@ -118,7 +118,7 @@ export default function ArticlesPage() {
   ];
 
   return (
-    <div dir={lang === 'ar' ? 'rtl' : 'ltr'} className="min-h-screen bg-[#121110] text-[#F5F2EB]">
+    <div dir={lang === 'ar' ? 'rtl' : 'ltr'} className="min-h-screen bg-[#FAF8F5] dark:bg-[#121110] text-[#1F1A15] dark:text-[#F5F2EB] transition-colors duration-300">
       <Header t={t} lang={lang} onLanguageChange={setLang} />
 
       <main className="pt-24 pb-20">
@@ -129,10 +129,10 @@ export default function ArticlesPage() {
               <BookOpen className="w-3.5 h-3.5" />
               <span>{lang === 'ar' ? 'مكتبة المقالات والنصائح الهندسية' : 'Full Design Articles Library'}</span>
             </span>
-            <h1 className="text-3xl sm:text-5xl font-serif text-[#F5F2EB]">
+            <h1 className="text-3xl sm:text-5xl font-serif text-[#1F1A15] dark:text-[#F5F2EB]">
               {lang === 'ar' ? 'دليلك الهندسي لتشطيب وتصميم العقار الفاخر' : 'Luxury Fitout & Interior Design Guides'}
             </h1>
-            <p className="mt-4 text-base text-[#E0D5C5] font-light">
+            <p className="mt-4 text-base text-[#5C5243] dark:text-[#E0D5C5] font-light">
               {lang === 'ar'
                 ? 'اقرأ مقالات وإرشادات خبراء أورا للتخطيط واختيار الخامات والميزانيات.'
                 : 'Read expert architectural guides to assist your material choices and budgeting.'}
@@ -145,7 +145,7 @@ export default function ArticlesPage() {
               <div
                 key={art.id}
                 onClick={() => setSelectedArticle(art)}
-                className="bg-[#1C1917] rounded-3xl overflow-hidden border border-[#C5A059]/30 hover:border-[#C5A059] shadow-xl group cursor-pointer transition-all duration-300 flex flex-col justify-between"
+                className="bg-white dark:bg-[#1C1917] rounded-3xl overflow-hidden border border-[#C5A059]/30 hover:border-[#C5A059] shadow-xl group cursor-pointer transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className="relative aspect-[16/9] overflow-hidden">

@@ -18,16 +18,16 @@ const TikTokIcon: React.FC<{ className?: string }> = ({ className = 'w-4 h-4' })
 
 export const Footer: React.FC<FooterProps> = ({ t, lang }) => {
   return (
-    <footer className="bg-[#121110] border-t border-[#C5A059]/30 text-[#E0D5C5] pt-16 pb-8">
+    <footer className="bg-[#FAF8F5] dark:bg-[#121110] border-t border-[#C5A059]/30 text-[#5C5243] dark:text-[#E0D5C5] pt-16 pb-8 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-[#38322B]">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 pb-12 border-b border-gray-200 dark:border-[#38322B]">
           {/* Brand Info */}
           <div className="space-y-4">
             <div className="flex items-center gap-3">
               <AuraLogo size="xs" showSlogan={false} isArabic={lang === 'ar'} />
-              <span className="font-serif font-bold text-lg text-white">AURA INTERIOR DESIGN</span>
+              <span className="font-serif font-bold text-lg text-[#1F1A15] dark:text-white">AURA INTERIOR DESIGN</span>
             </div>
-            <p className="text-xs text-[#A39888] leading-relaxed">
+            <p className="text-xs text-[#6B6052] dark:text-[#A39888] leading-relaxed">
               {t.footer.aboutText}
             </p>
             <div className="flex gap-3 pt-2">

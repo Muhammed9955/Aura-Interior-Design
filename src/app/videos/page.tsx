@@ -27,7 +27,7 @@ export default function VideosPage() {
   }, []);
 
   return (
-    <div dir={lang === 'ar' ? 'rtl' : 'ltr'} className="min-h-screen bg-[#121110] text-[#F5F2EB]">
+    <div dir={lang === 'ar' ? 'rtl' : 'ltr'} className="min-h-screen bg-[#FAF8F5] dark:bg-[#121110] text-[#1F1A15] dark:text-[#F5F2EB] transition-colors duration-300">
       <Header t={t} lang={lang} onLanguageChange={setLang} />
 
       <main className="pt-24 pb-20">
@@ -38,10 +38,10 @@ export default function VideosPage() {
               <Instagram className="w-3.5 h-3.5" />
               <span>{lang === 'ar' ? 'فيديوهاتنا على إنستغرام' : 'Our Instagram Videos'}</span>
             </span>
-            <h1 className="text-3xl sm:text-5xl font-serif text-[#F5F2EB]">
+            <h1 className="text-3xl sm:text-5xl font-serif text-[#1F1A15] dark:text-[#F5F2EB]">
               {lang === 'ar' ? 'فيديوهاتنا' : 'Our Videos'}
             </h1>
-            <p className="mt-4 text-base text-[#B8A99A] font-light">
+            <p className="mt-4 text-base text-[#5C5243] dark:text-[#B8A99A] font-light">
               {lang === 'ar'
                 ? 'استعرض جميع ريلز وفيديوهات أورا للتصميم الداخلي المباشرة من إنستغرام.'
                 : 'Browse all official Aura Interior Design reels and live videos directly from Instagram.'}

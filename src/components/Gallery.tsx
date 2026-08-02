@@ -40,7 +40,7 @@ export const Gallery: React.FC<GalleryProps> = ({ lang, previewCount = 6 }) => {
   }, [lightboxIndex, previewImages.length]);
 
   return (
-    <section id="gallery" className="py-24 bg-[#1C1917] relative">
+    <section id="gallery" className="py-24 bg-[#F3EDE2]/60 dark:bg-[#1C1917] relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
@@ -48,10 +48,10 @@ export const Gallery: React.FC<GalleryProps> = ({ lang, previewCount = 6 }) => {
             <Images className="w-3.5 h-3.5" />
             <span>{lang === 'ar' ? 'معرض الصور الحقيقية' : 'Real Project Gallery'}</span>
           </span>
-          <h2 className="text-3xl sm:text-4xl font-serif text-[#F5F2EB]">
+          <h2 className="text-3xl sm:text-4xl font-serif text-[#1F1A15] dark:text-[#F5F2EB]">
             {lang === 'ar' ? 'لمح من أعمالنا الفعلية' : 'Glimpse of Our Real Work'}
           </h2>
-          <p className="mt-4 text-base text-[#E0D5C5] font-light">
+          <p className="mt-4 text-base text-[#5C5243] dark:text-[#E0D5C5] font-light">
             {lang === 'ar'
               ? 'صور حقيقية لمشاريعنا المنفذة مباشرة من أرشيف إنستغرام أورا'
               : 'Real project photos directly from the official Aura Instagram archive'}

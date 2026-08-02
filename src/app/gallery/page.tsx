@@ -120,7 +120,7 @@ export default function GalleryPage() {
   }, [lightboxIndex]);
 
   return (
-    <div dir={lang === 'ar' ? 'rtl' : 'ltr'} className="min-h-screen bg-[#121110] text-[#F5F2EB]">
+    <div dir={lang === 'ar' ? 'rtl' : 'ltr'} className="min-h-screen bg-[#FAF8F5] dark:bg-[#121110] text-[#1F1A15] dark:text-[#F5F2EB] transition-colors duration-300">
       <Header t={t} lang={lang} onLanguageChange={setLang} />
 
       <main className="pt-24 pb-20">
@@ -131,10 +131,10 @@ export default function GalleryPage() {
               <Images className="w-3.5 h-3.5" />
               <span>{lang === 'ar' ? `معرض الصور - ${allGalleryImages.length} صورة` : `Full Photo Gallery - ${allGalleryImages.length} Photos`}</span>
             </span>
-            <h1 className="text-3xl sm:text-5xl font-serif text-[#F5F2EB]">
+            <h1 className="text-3xl sm:text-5xl font-serif text-[#1F1A15] dark:text-[#F5F2EB]">
               {lang === 'ar' ? 'أرشيف أورا — صور المشاريع الفعلية' : 'Aura Archive — Real Project Photos'}
             </h1>
-            <p className="mt-4 text-base text-[#E0D5C5] font-light">
+            <p className="mt-4 text-base text-[#5C5243] dark:text-[#E0D5C5] font-light">
               {lang === 'ar'
                 ? 'جميع صور مشاريعنا المنفذة فعلياً من أرشيف إنستغرام أورا للتصميم الداخلي.'
                 : 'Every photo from our official Instagram archive — real work by Aura Interior Design.'}

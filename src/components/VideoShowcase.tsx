@@ -47,7 +47,7 @@ export const VideoShowcase: React.FC<VideoShowcaseProps> = ({ lang }) => {
   };
 
   return (
-    <section id="videos" className="py-24 bg-[#121110] relative">
+    <section id="videos" className="py-24 bg-[#FAF8F5] dark:bg-[#121110] relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 
         {/* ── Section Header ── */}
@@ -56,10 +56,10 @@ export const VideoShowcase: React.FC<VideoShowcaseProps> = ({ lang }) => {
             <Instagram className="w-3.5 h-3.5" />
             <span>{lang === 'ar' ? 'فيديوهاتنا على إنستغرام' : 'Our Videos on Instagram'}</span>
           </span>
-          <h2 className="text-3xl sm:text-4xl font-serif text-[#F5F2EB]">
+          <h2 className="text-3xl sm:text-4xl font-serif text-[#1F1A15] dark:text-[#F5F2EB]">
             {lang === 'ar' ? 'شاهدوا فيديوهاتنا' : 'Watch Our Videos'}
           </h2>
-          <p className="mt-4 text-base text-[#B8A99A] font-light">
+          <p className="mt-4 text-base text-[#5C5243] dark:text-[#B8A99A] font-light">
             {lang === 'ar'
               ? 'ريلز أورا الرسمية مباشرة من إنستغرام — تشطيبات فاخرة ومشاريع حية.'
               : 'Official Aura reels from Instagram — luxury finishes and live project tours.'}

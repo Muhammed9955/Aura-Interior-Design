@@ -119,7 +119,7 @@ export const Articles: React.FC<ArticlesProps> = ({ lang }) => {
   ];
 
   return (
-    <section id="articles" className="py-24 bg-[#181614] relative">
+    <section id="articles" className="py-24 bg-[#FAF8F5] dark:bg-[#181614] relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -127,10 +127,10 @@ export const Articles: React.FC<ArticlesProps> = ({ lang }) => {
             <BookOpen className="w-3.5 h-3.5" />
             <span>{lang === 'ar' ? 'مقالات ونصائح أورا للتصميم' : 'Aura Design Articles & Guides'}</span>
           </span>
-          <h2 className="text-3xl sm:text-4xl font-serif text-[#F5F2EB]">
+          <h2 className="text-3xl sm:text-4xl font-serif text-[#1F1A15] dark:text-[#F5F2EB]">
             {lang === 'ar' ? 'دليلك الشامل لتشطيب وتصميم منزلك الفاخر' : 'Your Guide to Luxury Interior Design'}
           </h2>
-          <p className="mt-4 text-base text-[#E0D5C5] font-light">
+          <p className="mt-4 text-base text-[#5C5243] dark:text-[#E0D5C5] font-light">
             {lang === 'ar'
               ? 'مقالات ونصائح هندسية يقدمها خبراء أورا لمساعدتك في التخطيط واختيار الخامات والميزانية.'
               : 'Expert architectural insights to guide your budgeting, material selection, and home styling.'}
@@ -143,7 +143,7 @@ export const Articles: React.FC<ArticlesProps> = ({ lang }) => {
             <div
               key={art.id}
               onClick={() => setSelectedArticle(art)}
-              className="bg-[#1C1917] rounded-3xl overflow-hidden border border-[#C5A059]/30 hover:border-[#C5A059] shadow-xl group cursor-pointer transition-all duration-300 flex flex-col justify-between"
+              className="bg-white dark:bg-[#1C1917] rounded-3xl overflow-hidden border border-[#C5A059]/30 hover:border-[#C5A059] shadow-xl group cursor-pointer transition-all duration-300 flex flex-col justify-between"
             >
               <div>
                 <div className="relative aspect-[16/10] overflow-hidden">

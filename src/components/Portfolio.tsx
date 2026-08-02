@@ -55,17 +55,17 @@ export const Portfolio: React.FC<PortfolioProps> = ({ t, lang }) => {
   };
 
   return (
-    <section id="portfolio" className="py-24 bg-[#141210] relative">
+    <section id="portfolio" className="py-24 bg-[#FAF8F5] dark:bg-[#121110] relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-12">
           <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider text-[#C5A059] bg-[#C5A059]/15 border border-[#C5A059]/30 uppercase mb-3">
             {t.portfolio.badge}
           </span>
-          <h2 className="text-3xl sm:text-4xl font-serif text-[#F5F2EB]">
+          <h2 className="text-3xl sm:text-4xl font-serif text-[#1F1A15] dark:text-[#F5F2EB]">
             {t.portfolio.title}
           </h2>
-          <p className="mt-4 text-base text-[#E0D5C5] font-light">
+          <p className="mt-4 text-base text-[#5C5243] dark:text-[#E0D5C5] font-light">
             {t.portfolio.subtitle}
           </p>
         </div>
@@ -79,7 +79,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ t, lang }) => {
               className={`px-5 py-2 rounded-full text-xs font-semibold transition-all cursor-pointer ${
                 activeCategory === cat.id
                   ? 'bg-[#C5A059] text-white shadow-md'
-                  : 'bg-[#1C1917] text-[#E0D5C5] border border-[#C5A059]/30 hover:border-[#C5A059]'
+                  : 'bg-white dark:bg-[#1C1917] text-[#1F1A15] dark:text-[#E0D5C5] border border-[#C5A059]/30 hover:border-[#C5A059]'
               }`}
             >
               {cat.label}
@@ -93,7 +93,7 @@ export const Portfolio: React.FC<PortfolioProps> = ({ t, lang }) => {
             <div
               key={project.id}
               onClick={() => setSelectedProject(project)}
-              className="bg-[#1C1917] rounded-3xl overflow-hidden border border-[#C5A059]/30 hover:border-[#C5A059] shadow-xl group cursor-pointer transition-all duration-500 hover:-translate-y-1"
+              className="bg-white dark:bg-[#1C1917] rounded-3xl overflow-hidden border border-[#C5A059]/30 hover:border-[#C5A059] shadow-xl group cursor-pointer transition-all duration-500 hover:-translate-y-1"
             >
               <div className="relative aspect-[16/10] overflow-hidden">
                 <Image
