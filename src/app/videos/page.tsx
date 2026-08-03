@@ -58,11 +58,8 @@ export default function VideosPage() {
                   <span>Instagram</span>
                 </div>
 
-                {/* Phone-frame card with live embed */}
-                <div
-                  className="w-full rounded-3xl overflow-hidden shadow-2xl border border-[#C5A059]/30 bg-white"
-                  style={{ pointerEvents: 'none' }}
-                >
+                {/* Phone-frame card with live embed player */}
+                <div className="w-full rounded-3xl overflow-hidden shadow-2xl border border-[#C5A059]/30 bg-white">
                   <iframe
                     src={getEmbedUrl(video)}
                     className="w-full border-0 block"
@@ -78,26 +75,26 @@ export default function VideosPage() {
 
                 {/* Card title & actions */}
                 <div className="w-full space-y-2">
-                  <h3 className="text-sm font-serif font-semibold text-[#F5F2EB] text-center line-clamp-1">
+                  <h3 className="text-sm font-serif font-semibold text-[#1F1A15] dark:text-[#F5F2EB] text-center line-clamp-1">
                     {lang === 'ar' ? video.titleAr : video.titleEn}
                   </h3>
 
                   <div className="flex items-center gap-2 w-full">
                     <button
                       onClick={() => setFullscreenUrl(getEmbedUrl(video))}
-                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[#C5A059]/20 text-[#C5A059] text-xs font-bold border border-[#C5A059]/40 hover:bg-[#C5A059] hover:text-white transition-all cursor-pointer"
+                      className="flex-1 flex items-center justify-center gap-2 px-4 py-2 rounded-full bg-[#C5A059] text-white text-xs font-bold hover:bg-[#b08d48] transition-all cursor-pointer shadow-md"
                     >
                       <Maximize2 className="w-3.5 h-3.5" />
-                      <span>{lang === 'ar' ? 'ملء الشاشة' : 'Full Screen'}</span>
+                      <span>{lang === 'ar' ? 'تشغيل ملء الشاشة' : 'Play Full Screen'}</span>
                     </button>
                     <a
                       href={getSocialUrl(video)}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-[#1C1917] text-[#E0D5C5] text-xs font-semibold border border-[#C5A059]/30 hover:border-[#C5A059] transition-all"
+                      className="flex items-center gap-1.5 px-4 py-2 rounded-full bg-white dark:bg-[#1C1917] text-[#1F1A15] dark:text-[#E0D5C5] text-xs font-semibold border border-[#C5A059]/30 hover:border-[#C5A059] transition-all"
                     >
                       <ExternalLink className="w-3.5 h-3.5" />
-                      <span>{lang === 'ar' ? 'افتح' : 'Open'}</span>
+                      <span>{lang === 'ar' ? 'إنستغرام' : 'Instagram'}</span>
                     </a>
                   </div>
                 </div>

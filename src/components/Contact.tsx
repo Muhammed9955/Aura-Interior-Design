@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { TranslationContent, Language } from '../data/translations';
-import { Phone, Mail, MapPin, Send, Instagram, Facebook, CheckCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Send, Instagram, Facebook, CheckCircle, Calendar } from 'lucide-react';
 
 interface ContactProps {
   t: TranslationContent;
@@ -20,6 +20,7 @@ export const Contact: React.FC<ContactProps> = ({ t, lang }) => {
     name: '',
     phone: '',
     email: '',
+    inspectionDate: '',
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
@@ -34,8 +35,8 @@ export const Contact: React.FC<ContactProps> = ({ t, lang }) => {
 
     const text =
       lang === 'ar'
-        ? `مرحباً أورا للتصميم الداخلي والديكور 👋🏼\nأود حجز استشارة ورغبة في التشطيب والتصميم:\n• الاسم: ${formData.name}\n• رقم الهاتف: ${formData.phone}\n• البريد الإلكتروني: ${formData.email || 'غير محدد'}\n• تفاصيل العقار والملاحظات: ${formData.message}`
-        : `Hello Aura Interior Design 👋🏼\nI would like to book a consultation:\n• Name: ${formData.name}\n• Phone: ${formData.phone}\n• Email: ${formData.email || 'N/A'}\n• Project Details: ${formData.message}`;
+        ? `مرحباً أورا للتصميم الداخلي والديكور 👋🏼\nأود حجز استشارة ومعاينة للشقة/العقار:\n• الاسم: ${formData.name}\n• رقم الهاتف: ${formData.phone}\n• البريد الإلكتروني: ${formData.email || 'غير محدد'}\n• موعد المعاينة المقترح: ${formData.inspectionDate || 'سيتم الاتفاق عليه'}\n• تفاصيل العقار والملاحظات: ${formData.message}`
+        : `Hello Aura Interior Design 👋🏼\nI would like to book an apartment inspection & consultation:\n• Name: ${formData.name}\n• Phone: ${formData.phone}\n• Email: ${formData.email || 'N/A'}\n• Preferred Inspection Date: ${formData.inspectionDate || 'To be scheduled'}\n• Project Details: ${formData.message}`;
 
     const whatsappUrl = `https://wa.me/201097855765?text=${encodeURIComponent(text)}`;
     window.open(whatsappUrl, '_blank');
@@ -214,6 +215,21 @@ export const Contact: React.FC<ContactProps> = ({ t, lang }) => {
                       className="w-full px-4 py-3.5 rounded-2xl bg-white dark:bg-[#141210] border border-gray-300 dark:border-[#38322B] text-[#1F1A15] dark:text-[#F5F2EB] placeholder-gray-400 dark:placeholder-[#6B6052] focus:outline-none focus:border-[#C5A059]"
                     />
                   </div>
+                </div>
+
+                <div>
+                  <label className="block text-xs font-bold text-[#C5A059] uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                    <Calendar className="w-3.5 h-3.5 text-[#C5A059]" />
+                    <span>{lang === 'ar' ? 'تاريخ معاينة الشقة / العقار (اختياري)' : 'Apartment Inspection Date (Optional)'}</span>
+                  </label>
+                  <input
+                    type="date"
+                    name="inspectionDate"
+                    value={formData.inspectionDate}
+                    onChange={handleChange}
+                    min={new Date().toISOString().split('T')[0]}
+                    className="w-full px-4 py-3.5 rounded-2xl bg-white dark:bg-[#141210] border border-gray-300 dark:border-[#38322B] text-[#1F1A15] dark:text-[#F5F2EB] focus:outline-none focus:border-[#C5A059]"
+                  />
                 </div>
 
                 <div>
