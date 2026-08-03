@@ -162,22 +162,22 @@ export const Articles: React.FC<ArticlesProps> = ({ lang }) => {
                 </div>
 
                 <div className="p-5 space-y-2">
-                  <h3 className="text-base font-serif text-[#F5F2EB] group-hover:text-[#F3E5AB] transition-colors leading-snug line-clamp-2">
+                  <h3 className="text-base font-serif text-[#1F1A15] dark:text-[#F5F2EB] group-hover:text-[#C5A059] dark:group-hover:text-[#F3E5AB] transition-colors leading-snug line-clamp-2">
                     {lang === 'ar' ? art.titleAr : art.titleEn}
                   </h3>
-                  <p className="text-sm text-[#E0D5C5] leading-relaxed font-light line-clamp-3">
+                  <p className="text-sm text-[#5C5243] dark:text-[#E0D5C5] leading-relaxed font-light line-clamp-3">
                     {lang === 'ar' ? art.snippetAr : art.snippetEn}
                   </p>
                 </div>
               </div>
 
-              <div className="p-5 pt-0 border-t border-[#38322B] mt-3 flex items-center justify-between">
-                <span className="text-xs text-[#A39888] flex items-center gap-1">
+              <div className="p-5 pt-0 border-t border-gray-200 dark:border-[#38322B] mt-3 flex items-center justify-between">
+                <span className="text-xs text-[#5C5243] dark:text-[#A39888] flex items-center gap-1">
                   <Clock className="w-3 h-3 text-[#C5A059]" />
                   <span>{art.readTime}</span>
                 </span>
 
-                <span className="inline-flex items-center gap-1 text-sm font-bold text-[#F3E5AB] group-hover:underline">
+                <span className="inline-flex items-center gap-1 text-sm font-bold text-[#C5A059] dark:text-[#F3E5AB] group-hover:underline">
                   <span>{lang === 'ar' ? 'اقرأ المقال' : 'Read Article'}</span>
                   {lang === 'ar' ? <ArrowLeft className="w-3 h-3" /> : <ArrowRight className="w-3 h-3" />}
                 </span>

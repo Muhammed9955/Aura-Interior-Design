@@ -145,7 +145,7 @@ export default function ArticlesPage() {
               <div
                 key={art.id}
                 onClick={() => setSelectedArticle(art)}
-                className="bg-white dark:bg-[#1C1917] rounded-3xl overflow-hidden border border-[#C5A059]/30 hover:border-[#C5A059] shadow-xl group cursor-pointer transition-all duration-300 flex flex-col justify-between"
+                className="bg-white dark:bg-[#1C1917] rounded-3xl overflow-hidden border border-gray-200 dark:border-[#C5A059]/30 hover:border-[#C5A059] shadow-xl group cursor-pointer transition-all duration-300 flex flex-col justify-between"
               >
                 <div>
                   <div className="relative aspect-[16/9] overflow-hidden">
@@ -168,22 +168,22 @@ export default function ArticlesPage() {
                   </div>
 
                   <div className="p-6 space-y-3">
-                    <h3 className="text-xl font-serif text-[#F5F2EB] group-hover:text-[#F3E5AB] transition-colors leading-snug">
+                    <h3 className="text-xl font-serif text-[#1F1A15] dark:text-[#F5F2EB] group-hover:text-[#C5A059] dark:group-hover:text-[#F3E5AB] transition-colors leading-snug">
                       {lang === 'ar' ? art.titleAr : art.titleEn}
                     </h3>
-                    <p className="text-xs text-[#E0D5C5] leading-relaxed font-light">
+                    <p className="text-xs text-[#5C5243] dark:text-[#E0D5C5] leading-relaxed font-light">
                       {lang === 'ar' ? art.snippetAr : art.snippetEn}
                     </p>
                   </div>
                 </div>
 
-                <div className="p-6 pt-0 border-t border-[#38322B] mt-4 flex items-center justify-between">
-                  <span className="text-[11px] text-[#A39888] flex items-center gap-1">
+                <div className="p-6 pt-0 border-t border-gray-200 dark:border-[#38322B] mt-4 flex items-center justify-between">
+                  <span className="text-[11px] text-[#5C5243] dark:text-[#A39888] flex items-center gap-1">
                     <User className="w-3 h-3 text-[#C5A059]" />
                     <span>{lang === 'ar' ? 'فريق مهندسي أورا' : 'Aura Engineering Team'}</span>
                   </span>
 
-                  <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#F3E5AB] group-hover:underline">
+                  <span className="inline-flex items-center gap-1.5 text-xs font-bold text-[#C5A059] dark:text-[#F3E5AB] group-hover:underline">
                     <span>{lang === 'ar' ? 'اقرأ المقال بالكامل' : 'Read Full Article'}</span>
                     {lang === 'ar' ? <ArrowLeft className="w-3.5 h-3.5" /> : <ArrowRight className="w-3.5 h-3.5" />}
                   </span>
