@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { TranslationContent, Language } from '../data/translations';
-import { Phone, Mail, MapPin, Send, Instagram, Facebook, CheckCircle, Calendar } from 'lucide-react';
+import { Phone, Mail, MapPin, Send, Instagram, Facebook, CheckCircle, Calendar, Clock } from 'lucide-react';
 
 interface ContactProps {
   t: TranslationContent;
@@ -21,11 +21,12 @@ export const Contact: React.FC<ContactProps> = ({ t, lang }) => {
     phone: '',
     email: '',
     inspectionDate: '',
+    inspectionTime: '',
     message: '',
   });
   const [submitted, setSubmitted] = useState(false);
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
@@ -33,10 +34,18 @@ export const Contact: React.FC<ContactProps> = ({ t, lang }) => {
     e.preventDefault();
     setSubmitted(true);
 
+    const formattedTime = formData.inspectionTime ? ` (${formData.inspectionTime})` : '';
+    const dateFormatted = formData.inspectionDate
+      ? `${formData.inspectionDate}${formattedTime}`
+      : 'سيتم الاتفاق عليه';
+    const dateFormattedEn = formData.inspectionDate
+      ? `${formData.inspectionDate}${formattedTime}`
+      : 'To be scheduled';
+
     const text =
       lang === 'ar'
-        ? `مرحباً أورا للتصميم الداخلي والديكور 👋🏼\nأود حجز استشارة ومعاينة للشقة/العقار:\n• الاسم: ${formData.name}\n• رقم الهاتف: ${formData.phone}\n• البريد الإلكتروني: ${formData.email || 'غير محدد'}\n• موعد المعاينة المقترح: ${formData.inspectionDate || 'سيتم الاتفاق عليه'}\n• تفاصيل العقار والملاحظات: ${formData.message}`
-        : `Hello Aura Interior Design 👋🏼\nI would like to book an apartment inspection & consultation:\n• Name: ${formData.name}\n• Phone: ${formData.phone}\n• Email: ${formData.email || 'N/A'}\n• Preferred Inspection Date: ${formData.inspectionDate || 'To be scheduled'}\n• Project Details: ${formData.message}`;
+        ? `مرحباً أورا للتصميم الداخلي والديكور 👋🏼\nأود حجز استشارة ومعاينة للشقة/العقار:\n• الاسم: ${formData.name}\n• رقم الهاتف: ${formData.phone}\n• البريد الإلكتروني: ${formData.email || 'غير محدد'}\n• موعد وقتا المعاينة المقترح: ${dateFormatted}\n• تفاصيل العقار والملاحظات: ${formData.message}`
+        : `Hello Aura Interior Design 👋🏼\nI would like to book an apartment inspection & consultation:\n• Name: ${formData.name}\n• Phone: ${formData.phone}\n• Email: ${formData.email || 'N/A'}\n• Preferred Inspection Date & Time: ${dateFormattedEn}\n• Project Details: ${formData.message}`;
 
     const whatsappUrl = `https://wa.me/201097855765?text=${encodeURIComponent(text)}`;
     window.open(whatsappUrl, '_blank');
@@ -217,19 +226,41 @@ export const Contact: React.FC<ContactProps> = ({ t, lang }) => {
                   </div>
                 </div>
 
-                <div>
-                  <label className="block text-xs font-bold text-[#C5A059] uppercase tracking-wider mb-2 flex items-center gap-1.5">
-                    <Calendar className="w-3.5 h-3.5 text-[#C5A059]" />
-                    <span>{lang === 'ar' ? 'تاريخ معاينة الشقة / العقار (اختياري)' : 'Apartment Inspection Date (Optional)'}</span>
-                  </label>
-                  <input
-                    type="date"
-                    name="inspectionDate"
-                    value={formData.inspectionDate}
-                    onChange={handleChange}
-                    min={new Date().toISOString().split('T')[0]}
-                    className="w-full px-4 py-3.5 rounded-2xl bg-white dark:bg-[#141210] border border-gray-300 dark:border-[#38322B] text-[#1F1A15] dark:text-[#F5F2EB] focus:outline-none focus:border-[#C5A059]"
-                  />
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <div>
+                    <label className="block text-xs font-bold text-[#C5A059] uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                      <Calendar className="w-3.5 h-3.5 text-[#C5A059]" />
+                      <span>{lang === 'ar' ? 'تاريخ المعاينة' : 'Inspection Date'}</span>
+                    </label>
+                    <input
+                      type="date"
+                      name="inspectionDate"
+                      value={formData.inspectionDate}
+                      onChange={handleChange}
+                      min={new Date().toISOString().split('T')[0]}
+                      className="w-full px-4 py-3.5 rounded-2xl bg-white dark:bg-[#141210] border border-gray-300 dark:border-[#38322B] text-[#1F1A15] dark:text-[#F5F2EB] focus:outline-none focus:border-[#C5A059]"
+                    />
+                  </div>
+
+                  <div>
+                    <label className="block text-xs font-bold text-[#C5A059] uppercase tracking-wider mb-2 flex items-center gap-1.5">
+                      <Clock className="w-3.5 h-3.5 text-[#C5A059]" />
+                      <span>{lang === 'ar' ? 'الوقت المفضّل' : 'Preferred Time'}</span>
+                    </label>
+                    <select
+                      name="inspectionTime"
+                      value={formData.inspectionTime}
+                      onChange={handleChange}
+                      className="w-full px-4 py-3.5 rounded-2xl bg-white dark:bg-[#141210] border border-gray-300 dark:border-[#38322B] text-[#1F1A15] dark:text-[#F5F2EB] focus:outline-none focus:border-[#C5A059]"
+                    >
+                      <option value="">{lang === 'ar' ? 'اختر التوقيت (اختياري)' : 'Select Slot (Optional)'}</option>
+                      <option value="10:00 AM - 12:00 PM">10:00 AM - 12:00 PM (صباحاً)</option>
+                      <option value="12:00 PM - 02:00 PM">12:00 PM - 02:00 PM (ظهراً)</option>
+                      <option value="02:00 PM - 04:00 PM">02:00 PM - 04:00 PM (عصراً)</option>
+                      <option value="04:00 PM - 06:00 PM">04:00 PM - 06:00 PM (مساءً)</option>
+                      <option value="06:00 PM - 08:00 PM">06:00 PM - 08:00 PM (ليلاً)</option>
+                    </select>
+                  </div>
                 </div>
 
                 <div>

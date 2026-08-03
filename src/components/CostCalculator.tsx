@@ -2,7 +2,7 @@
 
 import React, { useState } from 'react';
 import { TranslationContent, Language } from '../data/translations';
-import { Send, Layers, Sliders, Info, Calendar } from 'lucide-react';
+import { Send, Layers, Sliders, Info, Calendar, Clock } from 'lucide-react';
 import confetti from 'canvas-confetti';
 
 interface CostCalculatorProps {
@@ -15,6 +15,7 @@ export const CostCalculator: React.FC<CostCalculatorProps> = ({ t, lang }) => {
   const [unitType, setUnitType] = useState<'apartment' | 'villa' | 'office' | 'commercial'>('apartment');
   const [tier, setTier] = useState<'lux' | 'superLux' | 'ultraLux'>('superLux');
   const [inspectionDate, setInspectionDate] = useState<string>('');
+  const [inspectionTime, setInspectionTime] = useState<string>('');
 
   // Exact 2026 Egyptian market averages & ranges per sqm in EGP
   const tierRanges = {
@@ -61,7 +62,8 @@ export const CostCalculator: React.FC<CostCalculatorProps> = ({ t, lang }) => {
         ? t.calculator.office
         : t.calculator.commercial;
 
-    const dateText = inspectionDate ? `%0A- Preferred Inspection Date: ${inspectionDate}` : '';
+    const formattedTime = inspectionTime ? ` (${inspectionTime})` : '';
+    const dateText = inspectionDate ? `%0A- Preferred Inspection Date & Time: ${inspectionDate}${formattedTime}` : '';
 
     const message = `Hello Aura Interior Design, I generated a finishing cost estimate on your website:%0A- Unit Type: ${encodeURIComponent(
       unitName
@@ -237,19 +239,40 @@ export const CostCalculator: React.FC<CostCalculatorProps> = ({ t, lang }) => {
               </div>
             </div>
 
-            {/* Apartment Inspection Date (Optional) */}
-            <div className="pt-2">
-              <label className="block text-xs font-bold text-[#C5A059] uppercase tracking-wider mb-1.5 flex items-center gap-1.5">
-                <Calendar className="w-3.5 h-3.5 text-[#C5A059]" />
-                <span>{lang === 'ar' ? 'تاريخ معاينة الشقة / الموقع (اختياري)' : 'Apartment Inspection Date (Optional)'}</span>
-              </label>
-              <input
-                type="date"
-                value={inspectionDate}
-                onChange={(e) => setInspectionDate(e.target.value)}
-                min={new Date().toISOString().split('T')[0]}
-                className="w-full px-3.5 py-2.5 rounded-xl bg-gray-50 dark:bg-[#141210] border border-gray-300 dark:border-[#38322B] text-xs text-[#1F1A15] dark:text-[#F5F2EB] focus:outline-none focus:border-[#C5A059]"
-              />
+            {/* Apartment Inspection Date & Time (Optional) */}
+            <div className="pt-2 grid grid-cols-1 sm:grid-cols-2 gap-3">
+              <div>
+                <label className="block text-[11px] font-bold text-[#C5A059] uppercase tracking-wider mb-1 flex items-center gap-1">
+                  <Calendar className="w-3.5 h-3.5 text-[#C5A059]" />
+                  <span>{lang === 'ar' ? 'تاريخ المعاينة' : 'Inspection Date'}</span>
+                </label>
+                <input
+                  type="date"
+                  value={inspectionDate}
+                  onChange={(e) => setInspectionDate(e.target.value)}
+                  min={new Date().toISOString().split('T')[0]}
+                  className="w-full px-3 py-2 rounded-xl bg-gray-50 dark:bg-[#141210] border border-gray-300 dark:border-[#38322B] text-xs text-[#1F1A15] dark:text-[#F5F2EB] focus:outline-none focus:border-[#C5A059]"
+                />
+              </div>
+
+              <div>
+                <label className="block text-[11px] font-bold text-[#C5A059] uppercase tracking-wider mb-1 flex items-center gap-1">
+                  <Clock className="w-3.5 h-3.5 text-[#C5A059]" />
+                  <span>{lang === 'ar' ? 'التوقيت' : 'Time Slot'}</span>
+                </label>
+                <select
+                  value={inspectionTime}
+                  onChange={(e) => setInspectionTime(e.target.value)}
+                  className="w-full px-3 py-2 rounded-xl bg-gray-50 dark:bg-[#141210] border border-gray-300 dark:border-[#38322B] text-xs text-[#1F1A15] dark:text-[#F5F2EB] focus:outline-none focus:border-[#C5A059]"
+                >
+                  <option value="">{lang === 'ar' ? 'الوقت (اختياري)' : 'Slot (Optional)'}</option>
+                  <option value="10:00 AM - 12:00 PM">10:00 AM - 12:00 PM</option>
+                  <option value="12:00 PM - 02:00 PM">12:00 PM - 02:00 PM</option>
+                  <option value="02:00 PM - 04:00 PM">02:00 PM - 04:00 PM</option>
+                  <option value="04:00 PM - 06:00 PM">04:00 PM - 06:00 PM</option>
+                  <option value="06:00 PM - 08:00 PM">06:00 PM - 08:00 PM</option>
+                </select>
+              </div>
             </div>
 
             {/* WhatsApp Send Action */}
