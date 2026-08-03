@@ -42,7 +42,7 @@ export const Contact: React.FC<ContactProps> = ({ t, lang }) => {
   };
 
   return (
-    <section id="contact" className="py-24 bg-[#141210] dark:bg-[#141210] bg-white transition-colors duration-300 relative">
+    <section id="contact" className="py-24 bg-[#FAF8F5] dark:bg-[#141210] transition-colors duration-300 relative">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
@@ -57,7 +57,7 @@ export const Contact: React.FC<ContactProps> = ({ t, lang }) => {
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-start">
           {/* Contact Details & Social Links */}
           <div className="lg:col-span-5 space-y-8">
-            <div className="bg-gray-50 dark:bg-[#1C1917] p-8 rounded-3xl border border-[#C5A059]/30 shadow-xl space-y-6">
+            <div className="bg-white dark:bg-[#1C1917] p-8 rounded-3xl border border-[#C5A059]/30 shadow-xl space-y-6">
               <div className="flex items-start gap-4">
                 <div className="p-3 rounded-2xl bg-[#C5A059]/20 text-[#C5A059]">
                   <Phone className="w-5 h-5" />
@@ -147,7 +147,7 @@ export const Contact: React.FC<ContactProps> = ({ t, lang }) => {
           </div>
 
           {/* Consultation Form */}
-          <div className="lg:col-span-7 bg-gray-50 dark:bg-[#1C1917] p-8 rounded-3xl border border-[#C5A059]/30 shadow-xl">
+          <div className="lg:col-span-7 bg-white dark:bg-[#1C1917] p-8 rounded-3xl border border-[#C5A059]/30 shadow-xl">
             {submitted ? (
               <div className="text-center py-12 space-y-4">
                 <div className="w-16 h-16 rounded-full bg-[#C5A059]/20 text-[#C5A059] flex items-center justify-center mx-auto">

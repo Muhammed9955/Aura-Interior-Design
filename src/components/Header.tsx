@@ -4,7 +4,8 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import { TranslationContent, Language } from '../data/translations';
 import { AuraLogo } from './AuraLogo';
-import { Phone, Calendar, Globe, Menu, X } from 'lucide-react';
+import { Phone, Calendar, Globe, Menu, X, Sun, Moon } from 'lucide-react';
+import { useTheme } from '../hooks/useTheme';
 
 interface HeaderProps {
   t: TranslationContent;
@@ -14,6 +15,7 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ t, lang, onLanguageChange }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { isDark, toggleTheme } = useTheme();
 
   const toggleLanguage = () => {
     onLanguageChange(lang === 'ar' ? 'en' : 'ar');
@@ -81,6 +83,15 @@ export const Header: React.FC<HeaderProps> = ({ t, lang, onLanguageChange }) => 
             <span>{t.nav.bookConsultation}</span>
           </a>
 
+          {/* Dark / Light Theme Switcher */}
+          <button
+            onClick={toggleTheme}
+            className="p-1.5 rounded-full border border-[#C5A059]/40 text-[#C5A059] hover:bg-[#C5A059]/20 transition-all cursor-pointer"
+            title={isDark ? 'Switch to Light Mode / التبديل للوضع النهاري' : 'Switch to Dark Mode / التبديل للوضع الليلي'}
+          >
+            {isDark ? <Sun className="w-3.5 h-3.5" /> : <Moon className="w-3.5 h-3.5" />}
+          </button>
+
           {/* Language Toggle */}
           <button
             onClick={toggleLanguage}
@@ -94,6 +105,15 @@ export const Header: React.FC<HeaderProps> = ({ t, lang, onLanguageChange }) => 
 
         {/* Mobile Controls */}
         <div className="flex items-center gap-2 lg:hidden">
+          {/* Mobile Theme Toggle */}
+          <button
+            onClick={toggleTheme}
+            className="p-1.5 text-[#C5A059] text-xs font-bold"
+            title={isDark ? 'Switch to Light Mode' : 'Switch to Dark Mode'}
+          >
+            {isDark ? <Sun className="w-4 h-4" /> : <Moon className="w-4 h-4" />}
+          </button>
+
           <button
             onClick={toggleLanguage}
             className="p-1.5 text-[#C5A059] text-xs font-bold"

@@ -29,26 +29,26 @@ export const StyleVisualizer: React.FC<StyleVisualizerProps> = ({ t }) => {
   };
 
   return (
-    <section id="visualizer" className="py-24 bg-[#181614] relative">
+    <section id="visualizer" className="py-24 bg-[#FAF8F5] dark:bg-[#181614] relative transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="inline-block px-3 py-1 rounded-full text-xs font-semibold tracking-wider text-[#C5A059] bg-[#C5A059]/15 border border-[#C5A059]/30 uppercase mb-3">
             {t.visualizer.badge}
           </span>
-          <h2 className="text-3xl sm:text-4xl font-serif text-[#F5F2EB]">
+          <h2 className="text-3xl sm:text-4xl font-serif text-[#1F1A15] dark:text-[#F5F2EB]">
             {t.visualizer.title}
           </h2>
-          <p className="mt-4 text-base text-[#E0D5C5] font-light">
+          <p className="mt-4 text-base text-[#5C5243] dark:text-[#E0D5C5] font-light">
             {t.visualizer.subtitle}
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
-          {/* Controls Panel - Dark Matte Cards */}
+          {/* Controls Panel - Light / Dark Cards */}
           <div className="lg:col-span-5 space-y-8">
             {/* Style Selector */}
-            <div className="bg-[#1C1917] p-6 rounded-3xl border border-[#C5A059]/30 shadow-xl">
+            <div className="bg-white dark:bg-[#1C1917] p-6 rounded-3xl border border-[#C5A059]/30 shadow-xl">
               <label className="block text-xs font-bold text-[#C5A059] uppercase tracking-wider mb-4 flex items-center gap-2">
                 <Sparkles className="w-4 h-4 text-[#C5A059]" />
                 <span>{t.visualizer.selectStyle}</span>
@@ -66,8 +66,8 @@ export const StyleVisualizer: React.FC<StyleVisualizerProps> = ({ t }) => {
                     onClick={() => setSelectedStyle(st.id as any)}
                     className={`w-full p-3.5 rounded-2xl text-xs font-semibold flex items-center justify-between border transition-all cursor-pointer ${
                       selectedStyle === st.id
-                        ? 'border-[#C5A059] bg-[#2A241E] text-[#F3E5AB]'
-                        : 'border-[#38322B] bg-[#141210] text-[#E0D5C5] hover:border-[#C5A059]/50'
+                        ? 'border-[#C5A059] bg-[#C5A059]/15 dark:bg-[#2A241E] text-[#C5A059] dark:text-[#F3E5AB]'
+                        : 'border-gray-200 dark:border-[#38322B] bg-gray-50 dark:bg-[#141210] text-[#5C5243] dark:text-[#E0D5C5] hover:border-[#C5A059]/50'
                     }`}
                   >
                     <span>{st.label}</span>
@@ -78,7 +78,7 @@ export const StyleVisualizer: React.FC<StyleVisualizerProps> = ({ t }) => {
             </div>
 
             {/* Palette Picker */}
-            <div className="bg-[#1C1917] p-6 rounded-3xl border border-[#C5A059]/30 shadow-xl">
+            <div className="bg-white dark:bg-[#1C1917] p-6 rounded-3xl border border-[#C5A059]/30 shadow-xl">
               <label className="block text-xs font-bold text-[#C5A059] uppercase tracking-wider mb-4 flex items-center gap-2">
                 <Palette className="w-4 h-4 text-[#C5A059]" />
                 <span>{t.visualizer.selectPalette}</span>
@@ -96,11 +96,11 @@ export const StyleVisualizer: React.FC<StyleVisualizerProps> = ({ t }) => {
                     onClick={() => setSelectedPalette(pal.id as any)}
                     className={`p-3 rounded-2xl border text-start transition-all cursor-pointer ${
                       selectedPalette === pal.id
-                        ? 'border-[#C5A059] bg-[#2A241E]'
-                        : 'border-[#38322B] bg-[#141210]'
+                        ? 'border-[#C5A059] bg-[#C5A059]/15 dark:bg-[#2A241E]'
+                        : 'border-gray-200 dark:border-[#38322B] bg-gray-50 dark:bg-[#141210]'
                     }`}
                   >
-                    <span className="block text-[11px] font-semibold text-[#F5F2EB] mb-2 truncate">
+                    <span className="block text-[11px] font-semibold text-[#1F1A15] dark:text-[#F5F2EB] mb-2 truncate">
                       {pal.label}
                     </span>
                     <div className="flex gap-1">
