@@ -1,7 +1,6 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
-import Image from 'next/image';
 import { TranslationContent, Language } from '../data/translations';
 import { Calculator, Sparkles, ChevronLeft, ChevronRight } from 'lucide-react';
 
@@ -72,19 +71,17 @@ export const Hero: React.FC<HeroProps> = ({ t, lang }) => {
             index === currentSlide ? 'opacity-100 z-0' : 'opacity-0 -z-10'
           }`}
         >
-          <Image
+          <img
             src={slide.image}
             alt="Aura Showcase Interior Slide"
-            fill
-            priority={index === 0}
-            className="object-cover object-center scale-105 transition-transform duration-10000"
+            className="absolute inset-0 w-full h-full object-cover object-center scale-105"
           />
-          {/* Subtle Overlay Tint for Crisp Readability */}
+          {/* Overlay */}
           <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/25 to-black/30" />
         </div>
       ))}
 
-      {/* Slider Left / Right Control Buttons */}
+      {/* Slider Controls */}
       <button
         onClick={prevSlide}
         aria-label="Previous slide"
@@ -103,22 +100,18 @@ export const Hero: React.FC<HeroProps> = ({ t, lang }) => {
 
       {/* Floating Text Content */}
       <div className="relative z-10 max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 w-full text-center space-y-4">
-        {/* Slide Badge */}
         <div className="inline-block px-3.5 py-1 rounded-full bg-black/50 border border-[#C5A059]/60 backdrop-blur-md text-xs font-bold text-[#E5CE93] uppercase tracking-wider drop-shadow-md">
           {lang === 'ar' ? slides[currentSlide].badgeAr : slides[currentSlide].badgeEn}
         </div>
 
-        {/* Dynamic Headline */}
         <h1 className="text-3xl sm:text-4xl md:text-5xl font-serif text-white font-normal drop-shadow-lg leading-tight">
           {lang === 'ar' ? slides[currentSlide].titleAr : slides[currentSlide].titleEn}
         </h1>
 
-        {/* Dynamic Sub-Description */}
         <p className="text-base sm:text-lg text-white/95 font-normal max-w-2xl mx-auto drop-shadow-md leading-relaxed">
           {lang === 'ar' ? slides[currentSlide].descAr : slides[currentSlide].descEn}
         </p>
 
-        {/* Action CTAs */}
         <div className="pt-2 flex flex-col sm:flex-row items-center justify-center gap-3.5 w-full sm:w-auto">
           <a
             href="#calculator"
@@ -137,7 +130,7 @@ export const Hero: React.FC<HeroProps> = ({ t, lang }) => {
           </a>
         </div>
 
-        {/* Slide Indicator Dots */}
+        {/* Dots */}
         <div className="pt-4 flex items-center justify-center gap-2">
           {slides.map((_, idx) => (
             <button

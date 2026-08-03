@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
+
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { WhatsAppButton } from '../../components/WhatsAppButton';
@@ -149,11 +149,10 @@ export default function ArticlesPage() {
               >
                 <div>
                   <div className="relative aspect-[16/9] overflow-hidden">
-                    <Image
+                    <img
                       src={art.image}
                       alt={lang === 'ar' ? art.titleAr : art.titleEn}
-                      fill
-                      className="object-cover group-hover:scale-105 transition-transform duration-700"
+                      className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917] via-transparent to-transparent opacity-80" />
 
@@ -212,11 +211,10 @@ export default function ArticlesPage() {
                 </button>
 
                 <div className="relative aspect-[16/8] w-full bg-black">
-                  <Image
+                  <img
                     src={selectedArticle.image}
                     alt={lang === 'ar' ? selectedArticle.titleAr : selectedArticle.titleEn}
-                    fill
-                    className="object-cover"
+                    className="absolute inset-0 w-full h-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917] via-black/40 to-transparent" />
 

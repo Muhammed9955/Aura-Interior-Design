@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
+
 import { TranslationContent, Language } from '../data/translations';
 import { BookOpen, Clock, X, ArrowLeft, ArrowRight, Sparkles, CheckCircle2, User, ArrowUpRight, Grid } from 'lucide-react';
 
@@ -147,11 +147,10 @@ export const Articles: React.FC<ArticlesProps> = ({ lang }) => {
             >
               <div>
                 <div className="relative aspect-[16/10] overflow-hidden">
-                  <Image
+                  <img
                     src={art.image}
                     alt={lang === 'ar' ? art.titleAr : art.titleEn}
-                    fill
-                    className="object-cover group-hover:scale-105 transition-transform duration-700"
+                    className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917] via-transparent to-transparent opacity-80" />
 
@@ -232,11 +231,10 @@ export const Articles: React.FC<ArticlesProps> = ({ lang }) => {
                     className="bg-[#1C1917] rounded-3xl overflow-hidden border border-[#C5A059]/30 hover:border-[#C5A059] shadow-xl group cursor-pointer transition-all duration-300 flex flex-col justify-between"
                   >
                     <div className="relative aspect-[16/9] overflow-hidden">
-                      <Image
+                      <img
                         src={art.image}
                         alt={lang === 'ar' ? art.titleAr : art.titleEn}
-                        fill
-                        className="object-cover group-hover:scale-105 transition-transform duration-700"
+                        className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
                       />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917] via-transparent to-transparent opacity-80" />
 
@@ -277,11 +275,10 @@ export const Articles: React.FC<ArticlesProps> = ({ lang }) => {
 
               {/* Article Cover Image */}
               <div className="relative aspect-[16/8] w-full bg-black">
-                <Image
+                <img
                   src={selectedArticle.image}
                   alt={lang === 'ar' ? selectedArticle.titleAr : selectedArticle.titleEn}
-                  fill
-                  className="object-cover"
+                  className="absolute inset-0 w-full h-full object-cover"
                 />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1C1917] via-black/40 to-transparent" />
 

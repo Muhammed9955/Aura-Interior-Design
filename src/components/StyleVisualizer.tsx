@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
-import Image from 'next/image';
+
 import { TranslationContent, Language } from '../data/translations';
 import { Palette, Eye, Sparkles, Check } from 'lucide-react';
 
@@ -121,11 +121,10 @@ export const StyleVisualizer: React.FC<StyleVisualizerProps> = ({ t }) => {
           {/* Interactive Room Preview Canvas */}
           <div className="lg:col-span-7">
             <div className="relative aspect-[16/10] rounded-3xl overflow-hidden shadow-2xl border-2 border-[#C5A059]/40 group">
-              <Image
+              <img
                 src={styleImages[selectedStyle]}
                 alt="Style Preview"
-                fill
-                className="object-cover transition-transform duration-1000 group-hover:scale-105"
+                className="absolute inset-0 w-full h-full object-cover transition-transform duration-1000 group-hover:scale-105"
               />
 
               <div

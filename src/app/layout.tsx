@@ -79,6 +79,23 @@ export default function RootLayout({
   return (
     <html lang="ar" dir="rtl" className="dark scroll-smooth">
       <head>
+        {/* Anti-flicker: apply theme before React hydrates to avoid flash */}
+        <script
+          dangerouslySetInnerHTML={{
+            __html: `
+              (function() {
+                try {
+                  var saved = localStorage.getItem('theme');
+                  if (saved === 'light') {
+                    document.documentElement.classList.remove('dark');
+                  } else {
+                    document.documentElement.classList.add('dark');
+                  }
+                } catch(e) {}
+              })();
+            `,
+          }}
+        />
         <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
         <link rel="apple-touch-icon" href="/favicon.svg" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -94,3 +111,4 @@ export default function RootLayout({
     </html>
   );
 }
+

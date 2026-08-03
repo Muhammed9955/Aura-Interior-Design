@@ -1,12 +1,11 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
-import Image from 'next/image';
 import Link from 'next/link';
 import { Language } from '../data/translations';
-import { X, ZoomIn, Images, ArrowUpRight, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ZoomIn, Images, ArrowUpRight } from 'lucide-react';
+import { Lightbox } from './ui/Lightbox';
 
-// First 6 gallery images for homepage preview
 const galleryImages = [
   '/gallery/514270360_122111082434929138_9127036913966804476_n.jpg',
   '/gallery/514346601_122112028772929138_7720938269203130304_n.jpg',
@@ -58,7 +57,7 @@ export const Gallery: React.FC<GalleryProps> = ({ lang, previewCount = 6 }) => {
           </p>
         </div>
 
-        {/* 3-column Equal Grid Preview */}
+        {/* Grid */}
         <div className="grid grid-cols-1 sm:grid-cols-3 gap-4">
           {previewImages.map((src, i) => (
             <div
@@ -66,11 +65,10 @@ export const Gallery: React.FC<GalleryProps> = ({ lang, previewCount = 6 }) => {
               onClick={() => openLightbox(i)}
               className="relative aspect-square overflow-hidden rounded-2xl cursor-pointer group border border-[#C5A059]/20 hover:border-[#C5A059] transition-all shadow-lg"
             >
-              <Image
+              <img
                 src={src}
                 alt={`Aura Interior Design - ${lang === 'ar' ? 'صورة من أعمالنا' : 'Project photo'} ${i + 1}`}
-                fill
-                className="object-cover group-hover:scale-105 transition-transform duration-700"
+                className="absolute inset-0 w-full h-full object-cover group-hover:scale-105 transition-transform duration-700"
               />
               <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
                 <div className="w-12 h-12 rounded-full bg-[#C5A059] text-white flex items-center justify-center shadow-xl">
@@ -81,7 +79,7 @@ export const Gallery: React.FC<GalleryProps> = ({ lang, previewCount = 6 }) => {
           ))}
         </div>
 
-        {/* Link to Full Gallery Page */}
+        {/* View Full Gallery */}
         <div className="mt-12 text-center">
           <Link
             href="/gallery"
@@ -93,60 +91,15 @@ export const Gallery: React.FC<GalleryProps> = ({ lang, previewCount = 6 }) => {
           </Link>
         </div>
 
-        {/* Lightbox Modal */}
-        {lightboxIndex !== null && (
-          <div
-            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4"
-            onClick={closeLightbox}
-          >
-            <div
-              className="relative max-w-4xl w-full"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Counter */}
-              <div className="mb-3 px-2">
-                <span className="text-white/50 text-sm">
-                  {lightboxIndex + 1} / {previewImages.length}
-                </span>
-              </div>
-
-              <div className="relative aspect-[4/3] rounded-2xl overflow-hidden shadow-2xl border border-[#C5A059]/30">
-                <Image
-                  src={previewImages[lightboxIndex]}
-                  alt={`Aura Design - Image ${lightboxIndex + 1}`}
-                  fill
-                  className="object-contain bg-black"
-                />
-                {/* ── Circular X Close Button ── */}
-                <button
-                  onClick={closeLightbox}
-                  className="absolute top-4 right-4 z-30 w-11 h-11 rounded-full bg-black/80 text-white flex items-center justify-center hover:bg-black hover:scale-110 transition-all cursor-pointer shadow-2xl border border-white/10"
-                  aria-label="Close"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              {/* Prev/Next — absolute positioned so RTL doesn't flip them */}
-              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 pointer-events-none">
-                <button
-                  onClick={goPrev}
-                  style={{ position: 'absolute', left: '8px' }}
-                  className="pointer-events-auto p-3 rounded-full bg-black/60 text-white hover:bg-[#C5A059] transition-colors shadow-xl border border-white/10"
-                >
-                  <ChevronLeft className="w-6 h-6" />
-                </button>
-                <button
-                  onClick={goNext}
-                  style={{ position: 'absolute', right: '8px' }}
-                  className="pointer-events-auto p-3 rounded-full bg-black/60 text-white hover:bg-[#C5A059] transition-colors shadow-xl border border-white/10"
-                >
-                  <ChevronRight className="w-6 h-6" />
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
+        {/* Shared Lightbox */}
+        <Lightbox
+          images={previewImages}
+          currentIndex={lightboxIndex}
+          onClose={closeLightbox}
+          onNext={goNext}
+          onPrev={goPrev}
+          alt={(i) => `Aura Design - Image ${i + 1}`}
+        />
       </div>
     </section>
   );

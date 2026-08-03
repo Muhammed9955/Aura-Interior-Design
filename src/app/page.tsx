@@ -23,7 +23,7 @@ export default function Home() {
   const t = translations[lang];
 
   return (
-    <div dir={lang === 'ar' ? 'rtl' : 'ltr'} className="min-h-screen bg-[#121110] text-[#F5F2EB]">
+    <div dir={lang === 'ar' ? 'rtl' : 'ltr'} className="min-h-screen bg-[#FAF8F5] dark:bg-[#121110] text-[#1F1A15] dark:text-[#F5F2EB] transition-colors duration-300">
       {/* Header Bar */}
       <Header t={t} lang={lang} onLanguageChange={setLang} />
 

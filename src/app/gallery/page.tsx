@@ -1,12 +1,12 @@
 'use client';
 
 import React, { useState, useCallback } from 'react';
-import Image from 'next/image';
 import { Header } from '../../components/Header';
 import { Footer } from '../../components/Footer';
 import { WhatsAppButton } from '../../components/WhatsAppButton';
 import { translations, Language } from '../../data/translations';
-import { X, ZoomIn, Images, ChevronLeft, ChevronRight } from 'lucide-react';
+import { ZoomIn, Images } from 'lucide-react';
+import { Lightbox } from '../../components/ui/Lightbox';
 
 // All 89 gallery images from public/gallery
 const allGalleryImages = [
@@ -149,11 +149,9 @@ export default function GalleryPage() {
                 onClick={() => openLightbox(i)}
                 className="relative break-inside-avoid overflow-hidden rounded-2xl cursor-pointer group border border-[#C5A059]/20 hover:border-[#C5A059] transition-all shadow-lg mb-3"
               >
-                <Image
+                <img
                   src={src}
                   alt={`Aura Interior Design - Photo ${i + 1}`}
-                  width={400}
-                  height={500}
                   className="w-full object-cover group-hover:scale-105 transition-transform duration-700"
                 />
                 <div className="absolute inset-0 bg-black/30 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
@@ -166,61 +164,14 @@ export default function GalleryPage() {
           </div>
         </div>
 
-        {/* Lightbox Modal */}
-        {lightboxIndex !== null && (
-          <div
-            className="fixed inset-0 z-50 bg-black/95 backdrop-blur-md flex items-center justify-center p-4"
-            onClick={closeLightbox}
-          >
-            <div
-              className="relative max-w-4xl w-full"
-              onClick={(e) => e.stopPropagation()}
-            >
-              {/* Top Close Bar */}
-              <div className="flex items-center justify-between mb-3 px-2">
-                <span className="text-white/60 text-sm font-medium">
-                  {lightboxIndex + 1} / {allGalleryImages.length}
-                </span>
-                {/* ── Circular X Close Button ── */}
-                <button
-                  onClick={closeLightbox}
-                  className="absolute top-4 right-4 z-30 w-11 h-11 rounded-full bg-black/80 text-white flex items-center justify-center hover:bg-black hover:scale-110 transition-all cursor-pointer shadow-2xl border border-white/10"
-                  aria-label="Close"
-                >
-                  <X className="w-5 h-5" />
-                </button>
-              </div>
-
-              <div className="relative rounded-2xl overflow-hidden shadow-2xl border border-[#C5A059]/30 bg-black max-h-[80vh]">
-                <Image
-                  src={allGalleryImages[lightboxIndex]}
-                  alt={`Aura Design - Image ${lightboxIndex + 1}`}
-                  width={1200}
-                  height={900}
-                  className="w-full h-full object-contain max-h-[80vh]"
-                />
-              </div>
-
-              {/* Prev/Next — absolute positioned so RTL doesn't flip them */}
-              <div className="absolute inset-x-0 top-1/2 -translate-y-1/2 pointer-events-none mt-6">
-                <button
-                  onClick={goPrev}
-                  style={{ position: 'absolute', left: '8px' }}
-                  className="pointer-events-auto p-3 rounded-full bg-black/70 text-white hover:bg-[#C5A059] transition-colors shadow-xl border border-white/10"
-                >
-                  <ChevronLeft className="w-6 h-6" />
-                </button>
-                <button
-                  onClick={goNext}
-                  style={{ position: 'absolute', right: '8px' }}
-                  className="pointer-events-auto p-3 rounded-full bg-black/70 text-white hover:bg-[#C5A059] transition-colors shadow-xl border border-white/10"
-                >
-                  <ChevronRight className="w-6 h-6" />
-                </button>
-              </div>
-            </div>
-          </div>
-        )}
+        <Lightbox
+          images={allGalleryImages}
+          currentIndex={lightboxIndex}
+          onClose={closeLightbox}
+          onNext={goNext}
+          onPrev={goPrev}
+          alt={(i) => `Aura Design - Image ${i + 1}`}
+        />
       </main>
 
       <Footer t={t} lang={lang} />

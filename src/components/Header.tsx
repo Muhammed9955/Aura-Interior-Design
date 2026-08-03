@@ -1,10 +1,10 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Link from 'next/link';
 import { TranslationContent, Language } from '../data/translations';
 import { AuraLogo } from './AuraLogo';
-import { Phone, Calendar, Globe, Menu, X, Sun, Moon } from 'lucide-react';
+import { Phone, Calendar, Globe, Menu, X } from 'lucide-react';
 
 interface HeaderProps {
   t: TranslationContent;
@@ -14,33 +14,6 @@ interface HeaderProps {
 
 export const Header: React.FC<HeaderProps> = ({ t, lang, onLanguageChange }) => {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [isDark, setIsDark] = useState(true);
-
-  useEffect(() => {
-    const isDarkMode =
-      document.documentElement.classList.contains('dark') ||
-      localStorage.getItem('theme') === 'dark' ||
-      (!localStorage.getItem('theme') && window.matchMedia('(prefers-color-scheme: dark)').matches);
-
-    setIsDark(isDarkMode);
-    if (isDarkMode) {
-      document.documentElement.classList.add('dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-    }
-  }, []);
-
-  const toggleTheme = () => {
-    const nextDark = !isDark;
-    setIsDark(nextDark);
-    if (nextDark) {
-      document.documentElement.classList.add('dark');
-      localStorage.setItem('theme', 'dark');
-    } else {
-      document.documentElement.classList.remove('dark');
-      localStorage.setItem('theme', 'light');
-    }
-  };
 
   const toggleLanguage = () => {
     onLanguageChange(lang === 'ar' ? 'en' : 'ar');
@@ -58,9 +31,9 @@ export const Header: React.FC<HeaderProps> = ({ t, lang, onLanguageChange }) => 
   ];
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 bg-[#121110]/90 dark:bg-[#121110]/95 bg-white/90 backdrop-blur-md border-b border-[#C5A059]/30 transition-colors duration-300 h-14">
+    <header className="fixed top-0 left-0 right-0 z-40 bg-white/90 dark:bg-[#121110]/95 backdrop-blur-md border-b border-[#C5A059]/30 transition-colors duration-300 h-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-full flex items-center justify-between">
-        {/* Brand Emblem Logo */}
+        {/* Brand Logo */}
         <Link href="/" className="flex items-center gap-2 group">
           <AuraLogo size="xs" showSlogan={false} isArabic={lang === 'ar'} />
           <span className="font-serif font-bold text-sm tracking-wider text-[#1F1A15] dark:text-[#F5F2EB] group-hover:text-[#C5A059] transition-colors">
@@ -68,7 +41,7 @@ export const Header: React.FC<HeaderProps> = ({ t, lang, onLanguageChange }) => 
           </span>
         </Link>
 
-        {/* Desktop Navigation Links */}
+        {/* Desktop Navigation */}
         <nav className="hidden lg:flex items-center gap-6">
           {navLinks.map((link) => (
             <Link
@@ -82,9 +55,9 @@ export const Header: React.FC<HeaderProps> = ({ t, lang, onLanguageChange }) => 
           ))}
         </nav>
 
-        {/* Actions CTA & Controls */}
+        {/* Desktop Actions */}
         <div className="hidden sm:flex items-center gap-3">
-          {/* Phone Link */}
+          {/* Phone */}
           <a
             href="tel:01126951134"
             className="flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold text-[#1F1A15] dark:text-[#F5F2EB] hover:text-[#C5A059] transition-colors"
@@ -93,7 +66,7 @@ export const Header: React.FC<HeaderProps> = ({ t, lang, onLanguageChange }) => 
             <span dir="ltr" className="inline-block font-mono tracking-wide">011 26951134</span>
           </a>
 
-          {/* Consultation CTA — Opens WhatsApp directly */}
+          {/* WhatsApp Consultation CTA */}
           <a
             href={`https://wa.me/201097855765?text=${encodeURIComponent(
               lang === 'ar'
@@ -108,7 +81,7 @@ export const Header: React.FC<HeaderProps> = ({ t, lang, onLanguageChange }) => 
             <span>{t.nav.bookConsultation}</span>
           </a>
 
-          {/* Language Switcher */}
+          {/* Language Toggle */}
           <button
             onClick={toggleLanguage}
             className="flex items-center gap-1 px-2.5 py-1 rounded-full border border-[#C5A059]/40 text-xs font-semibold text-[#1F1A15] dark:text-[#F5F2EB] hover:bg-[#C5A059]/20 transition-all cursor-pointer"
@@ -119,9 +92,8 @@ export const Header: React.FC<HeaderProps> = ({ t, lang, onLanguageChange }) => 
           </button>
         </div>
 
-        {/* Mobile Controls & Hamburger */}
+        {/* Mobile Controls */}
         <div className="flex items-center gap-2 lg:hidden">
-          {/* Mobile Lang Toggle */}
           <button
             onClick={toggleLanguage}
             className="p-1.5 text-[#C5A059] text-xs font-bold"
@@ -139,7 +111,7 @@ export const Header: React.FC<HeaderProps> = ({ t, lang, onLanguageChange }) => 
         </div>
       </div>
 
-      {/* Mobile Drawer Navigation */}
+      {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white dark:bg-[#121110] border-b border-[#C5A059]/30 px-4 pt-3 pb-6 space-y-3 shadow-2xl transition-colors">
           <nav className="flex flex-col space-y-2">
